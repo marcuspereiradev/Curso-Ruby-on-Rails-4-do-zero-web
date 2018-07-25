@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
-  get 'produtos' => 'produtos#index'
+  get '/produtos/new' => 'produtos#new'
+  root 'produtos#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
