@@ -1,61 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <%= nav_bar brand: 'Kunstee', brand_link: root_url %>
-    <table class="table table-bordered table table-hover">
-        <thead>
+<table class="table table-bordered table table-hover">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Preço</th>
+            <th>Quantidade</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <% @produtos_por_nome.each do |produto| %>
             <tr>
-                <th>Nome</th>
-                <th>Descrição</th>
-                <th>Preço</th>
-                <th>Quantidade</th>
+                <td><%= produto.nome%></td>
+                <td><%= produto.descricao%></td>
+                <td><%= produto.quantidade%></td>
+                <td><%= produto.preco%></td>
+                <td><%= 
+                    button_to 'Remover', produto, method: :delete,
+                    class: "btn-danger",
+                    data: {confirm: "Tem certeza que deseja remover #{produto.nome}?"} 
+                %></td>
             </tr>
-        </thead>
-        <tbody>
+        <% end %>
+        <tr>
             
-            <% @produtos_por_nome.each do |produto| %>
-                <tr>
-                    <td><%= produto.nome%></td>
-                    <td><%= produto.descricao%></td>
-                    <td><%= produto.quantidade%></td>
-                    <td><%= produto.preco%></td>
-                </tr>
-            <% end %>
-            <tr>
-                
-            </tr>
-        </tbody>
-    </table>
+        </tr>
+    </tbody>
+</table>
 
-    <table class="table table-bordered table table-hover">
-        <thead>
+<table class="table table-bordered table table-hover">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Preço</th>
+            <th>Quantidade</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <% @produtos_por_preco.each do |produto| %>
             <tr>
-                <th>Nome</th>
-                <th>Descrição</th>
-                <th>Preço</th>
-                <th>Quantidade</th>
+                <td><%= produto.nome%></td>
+                <td><%= produto.descricao%></td>
+                <td><%= produto.quantidade%></td>
+                <td><%= produto.preco%></td>
             </tr>
-        </thead>
-        <tbody>
+        <% end %>
+        <tr>
             
-            <% @produtos_por_preco.each do |produto| %>
-                <tr>
-                    <td><%= produto.nome%></td>
-                    <td><%= produto.descricao%></td>
-                    <td><%= produto.quantidade%></td>
-                    <td><%= produto.preco%></td>
-                </tr>
-            <% end %>
-            <tr>
-                
-            </tr>
-        </tbody>
-    </table>
-</body>
-</html>
+        </tr>
+    </tbody>
+</table>
+
+<%= link_to 'Criar novo produto', new_produto_path %>
