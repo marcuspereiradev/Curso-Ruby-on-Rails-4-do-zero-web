@@ -4,7 +4,7 @@
     <% end %> 
 <% end %>
 
-<%= form_for Produto.new do |f| %>
+<%= form_for @produto do |f| %>
     <div class="form-group">
         <%= f.label :nome %>
         <%= f.text_field :nome, class: "form-control" %>
@@ -13,6 +13,11 @@
     <div class="form-group">
         <%= f.label :descricao %>
         <%= f.text_area :descricao, class: "form-control", rows: 4 %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label :departamento %>
+        <%= f.collection_select :departamento_id, @departamentos, :id, :nome, {}, class: "form-control" %>
     </div>
 
     <div class="form-inline">
